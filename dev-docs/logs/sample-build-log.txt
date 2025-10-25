@@ -1,0 +1,5 @@
+[INFO] Starting build for backend-service
+[INFO] Running tests...
+[ERROR] Tests failed: NullPointerException in UserControllerTest
+[INFO] Build failed in 3m 22s
+[INFO] Jenkins build result: FAILURE
