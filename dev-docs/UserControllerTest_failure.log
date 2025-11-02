@@ -1,0 +1,5 @@
+# Type: Test Failure
+# Component: UserController
+# Description: NullPointerException during user creation test.
+Test Name: shouldCreateUser_WhenValidInput
+Error: java.lang.NullPointerException at UserController.java:58

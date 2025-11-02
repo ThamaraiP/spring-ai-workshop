@@ -1,0 +1,4 @@
+# Type: Build Error
+# Component: Backend
+# Description: Maven build failed inside Docker image creation due to missing app.jar.
+[ERROR] mvn clean package failed. Reason: FileNotFoundException during Docker build. Missing app.jar.

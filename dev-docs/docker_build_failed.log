@@ -1,0 +1,1 @@
+COPY failed: stat /app/target/app.jar: no such file or directory. The command '/bin/sh -c mvn clean package' returned a non-zero code: 1

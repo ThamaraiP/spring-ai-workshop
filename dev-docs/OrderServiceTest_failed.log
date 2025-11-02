@@ -1,0 +1,5 @@
+# Type: Test Failure
+# Component: OrderService
+# Description: Expected order total did not match actual total.
+Test Name: testCalculateOrderTotal
+AssertionError: expected <100.0> but was <0.0>
