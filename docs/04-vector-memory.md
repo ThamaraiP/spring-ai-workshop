@@ -128,6 +128,28 @@ public class LogLoader implements CommandLineRunner {
 ```
 
 ## Update Controller to include context
+Add VectorStore and it's import:
+```java
+import org.springframework.ai.vectorstore.VectorStore;
+```
+
+```java
+private final VectorStore vectorStore;
+public AIController(ChatClient chatClient, ChatMemory chatMemory, VectorStore vectorStore) {
+  this.chatClient = chatClient;
+  this.chatMemory = chatMemory;
+  this.vectorStore = vectorStore;
+}
+```
+
+
+Add import related to VectorStore:
+```java
+import org.springframework.ai.document.Document;
+import org.springframework.ai.vectorstore.SearchRequest;
+import java.util.List;
+import java.util.stream.Collectors;
+```
 
 ```java
 public String ask(@PathVariable String sessionId, @RequestBody Map<String, String> request) {

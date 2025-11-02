@@ -61,7 +61,26 @@ Guidelines:
 
 
 ## Controller update
-Add memory use:
+Add ChatMemory and it's import:
+```java
+import org.springframework.ai.chat.memory.ChatMemory;
+```
+
+```java
+private final ChatMemory chatMemory;
+public AIController(ChatClient chatClient, ChatMemory chatMemory) {
+  this.chatClient = chatClient;
+  this.chatMemory = chatMemory;
+}
+```
+
+Add memory use and it's import:
+```java
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.messages.SystemMessage;
+```
+
 ```java
 @PostMapping("/{sessionId}")
 public String ask(@PathVariable String sessionId, @RequestBody Map<String, String> request) {

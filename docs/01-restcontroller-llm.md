@@ -10,7 +10,6 @@ Create a Spring Boot REST controller that connects to the LLM using Spring AI.
 package com.example.spring_ai_demo.config;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -58,7 +57,7 @@ public class AIController {
 
 ## Test
 ```bash
-curl -X POST http://localhost:8080/ask -H "Content-Type: application/json" -d '{"message":"Hi, I’m debugging a Jenkins pipeline failure."}'
+curl -X POST http://localhost:8080/ask -H "Content-Type: application/json" -d '{"message":"Hi, I am debugging a Jenkins pipeline failure."}'
 ```
 ```bash
 curl -X POST http://localhost:8080/ask -H "Content-Type: application/json" -d '{"message":"What usually causes backend builds to fail"}'

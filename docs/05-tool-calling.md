@@ -24,9 +24,24 @@ public class CICDTools {
   }
 }
 
+
 ```
 
-## Controller integration
+## Update Controller to include context
+Add CICDTools and it's import:
+```java
+import com.example.spring_ai_demo.service.CICDTools;
+```
+
+```java
+private final CICDTools cicdTools;
+public AIController(ChatClient chatClient, ChatMemory chatMemory, VectorStore vectorStore, CICDTools cicdTools) {
+  this.chatClient = chatClient;
+  this.chatMemory = chatMemory;
+  this.vectorStore = vectorStore;
+  this.cicdTools = cicdTools;
+}
+```
 ```java
 public String ask(@PathVariable String sessionId, @RequestBody Map<String, String> request) {
   String message = request.get("message");
@@ -81,9 +96,9 @@ Question:
 {message}
 
 Guidelines:
+- Only call tools when user explicitly requests an action (like "fix", "commit", or "rerun").
 - Always return valid JSON (no Markdown).
 - Keep recommendations clear and practical.
-- Only call tools when user explicitly requests an action (like "fix", "commit", or "rerun").
 ```
 
 ## Example query
@@ -92,7 +107,7 @@ curl -X POST http://localhost:8080/ask/123 -H "Content-Type: application/json" -
 ```
 
 ```bash
-curl -X POST http://localhost:8080/ask/123 -H "Content-Type: application/json" -d '{"message":"Can you automatically fix the Docker build error?"}'
+curl -X POST http://localhost:8080/ask/123 -H "Content-Type: application/json" -d '{"message":"commit the fix and run the jerkins pipeline?"}'
 ```
 
 

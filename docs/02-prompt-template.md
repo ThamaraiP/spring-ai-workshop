@@ -6,8 +6,6 @@ Use a `.st` file for structured prompting.
 ## Add prompt template resource
 `src/main/resources/prompt/build-analysis.st`
 ```
-You are a CI/CD assistant that analyzes build, test, and deployment issues.
-
 Respond ONLY in JSON:
 response: short explanation
 root_cause: detailed cause
@@ -18,11 +16,15 @@ Question:
 {message}
 ```
 
-## Code update
+
+## Add PromptTemplate to Controller
 ```java
 @Value("classpath:prompt/build-analysis.st")
 private Resource promptTemplate;
+```
 
+## Update the endpoint to use PromptTemplate
+```java
 @PostMapping
 public String ask(@RequestBody Map<String, String> req) {
   String message = req.get("message");
@@ -32,6 +34,13 @@ public String ask(@RequestBody Map<String, String> req) {
   
   return chatClient.prompt(prompt).call().content();
 }
+```
+
+## Add Import
+```java
+import org.springframework.core.io.Resource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ai.prompt.template.PromptTemplate;
 ```
 
 ## Test
