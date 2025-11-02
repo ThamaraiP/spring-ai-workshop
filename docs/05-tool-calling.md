@@ -74,7 +74,7 @@ public String ask(@PathVariable String sessionId, @RequestBody Map<String, Strin
 ## Change the prompt template 
 `src/main/resources/prompt/build-analysis.st`
 ```
-You are a CI/CD assistant that analyzes build, test, and deployment issues using the provided context from log files along with chat history.
+You are a CI/CD assistant that analyzes build, test, and deployment issues using the provided context from log files along with chat history and tools
 
 Respond ONLY in JSON:
 response: short explanation
