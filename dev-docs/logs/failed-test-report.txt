@@ -1,4 +1,0 @@
-Test Class: com.example.user.UserControllerTest
-Error: java.lang.NullPointerException at line 42
-Cause: Mocked service returned null for userRepository
-Resolution: Initialize @MockBean and set up mock data in @BeforeEach
