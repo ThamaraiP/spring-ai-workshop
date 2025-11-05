@@ -3,6 +3,8 @@
 ## Objective
 Enable LLM-triggered actions like auto-fix or rerun Jenkins.
 
+![Tool Calling.png](../images/Tool%20Calling.png)
+
 ## Tool implementation
 ```java
 package com.example.spring_ai_demo.service;
