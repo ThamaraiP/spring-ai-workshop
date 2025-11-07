@@ -1,4 +1,4 @@
-# Step 2: Introduce Prompt Template
+# Introduce Prompt Template
 
 ## Objective
 Use a `.st` file for structured prompting.

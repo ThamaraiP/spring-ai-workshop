@@ -1,4 +1,4 @@
-# Step 5: Introduce Tool Calling
+# Introduce Tool Calling
 
 ## Objective
 Enable LLM-triggered actions like auto-fix or rerun Jenkins.

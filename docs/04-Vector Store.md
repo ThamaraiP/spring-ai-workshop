@@ -1,4 +1,4 @@
-# Step 4: Introduce Vector Store with Chat Memory
+# Introduce Vector Store with Chat Memory
 
 ## Objective
 

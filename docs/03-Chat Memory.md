@@ -1,4 +1,4 @@
-# Step 3: Introduce Chat Memory
+# Introduce Chat Memory
 
 ## Objective
 Add in-memory conversation history for contextual responses.
