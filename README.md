@@ -37,7 +37,7 @@ This repository presents a comprehensive, modular workshop for building producti
 - **docker-compose.yml**: Infrastructure for running required services locally
 
 ## Getting Started
-- [Step 1: Create Spring AI Application](docs/1.Create%20Spring%20AI%20Application.md)
+- [Step 1: Create Spring AI Application](docs/00.Create%20Spring%20AI%20Application.md)
 
 Follow the sequence in the `docs` folder to incrementally develop, test, and extend your Spring AI agent.
 
