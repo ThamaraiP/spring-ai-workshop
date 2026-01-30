@@ -29,7 +29,7 @@ public class CICDTools {
 
 ```
 
-## Update Controller to include context
+## Update Controller
 Add CICDTools and it's import:
 ```java
 import com.example.spring_ai_demo.service.CICDTools;
@@ -101,6 +101,48 @@ Guidelines:
 - Only call tools when user explicitly requests an action (like "fix", "commit", or "rerun").
 - Always return valid JSON (no Markdown).
 - Keep recommendations clear and practical.
+```
+## Change to Response Entity
+
+Creating the record AnalysisResponse
+```java
+package com.example.spring_ai_demo.model;
+
+import java.util.List;
+
+public record AnalysisResponse(String response, String root_cause, List<String> recommendation,
+                               String severity) {
+
+}
+```
+
+```java
+public AnalysisResponse ask(@PathVariable String sessionId, @RequestBody Map<String, String> request) {
+  String message = request.get("message");
+
+  // Retrieve chat history
+  var history = chatMemory.get(sessionId);
+
+  // Perform similarity search in vector store
+  List<Document> docs = vectorStore.similaritySearch(SearchRequest.builder()
+      .query(message).topK(5).build());
+  String context = docs.stream().map(Document::getText).collect(Collectors.joining("\n---\n"));
+
+  // Load the prompt template from the resource
+  PromptTemplate template = new PromptTemplate(promptTemplate);
+  var prompt = template.create(Map.of("history", history, "context", context, "message", message));
+
+  //Given tools definition here to Model along with Memory and Context
+  String response = chatClient.prompt(prompt)
+      .tools(cicdTools)
+      .advisors(advisorSpec -> advisorSpec.param("conversationId", sessionId)).call().entity(AnalysisResponse.class);
+
+  // Update chat memory
+  chatMemory.add(sessionId, new UserMessage(message));
+  assert response != null;
+  chatMemory.add(sessionId, new AssistantMessage(response));
+  return response;
+}
 ```
 
 ## Example query
