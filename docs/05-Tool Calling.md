@@ -102,6 +102,17 @@ Guidelines:
 - Always return valid JSON (no Markdown).
 - Keep recommendations clear and practical.
 ```
+
+
+## Example query
+```bash
+curl -X POST http://localhost:8080/ask/123 -H "Content-Type: application/json" -d '{"message":"Was the deployment successful?"}'
+```
+
+```bash
+curl -X POST http://localhost:8080/ask/123 -H "Content-Type: application/json" -d '{"message":"commit the fix and run the jerkins pipeline?"}'
+```
+
 ## Change to Response Entity
 
 Creating the record AnalysisResponse
