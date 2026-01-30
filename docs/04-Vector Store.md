@@ -179,6 +179,16 @@ public String ask(@PathVariable String sessionId, @RequestBody Map<String, Strin
 }
   ```
 
+## Vector Search Methods – Summary
+
+- topK(n) – Retrieve the top n most similar documents.
+- threshold(score) – Return all documents with similarity above a given score.
+- filter(metadata) – Limit results based on document metadata (e.g., type, category, date).
+- rerank(model) – Reorder top results using a model to improve relevance.
+- deduplicate() – Remove duplicate or highly similar results.
+
+**Tip:** Combining multiple methods (e.g., filter + topK + rerank) usually gives the best results.
+
 ## Change the prompt template
 `src/main/resources/prompt/build-analysis.st`
 ```
