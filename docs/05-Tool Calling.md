@@ -111,7 +111,7 @@ package com.example.spring_ai_demo.model;
 import java.util.List;
 
 public record AnalysisResponse(String response, String root_cause, List<String> recommendation,
-                               String severity) {
+                               String severity, List<String> related_files, List<String> tools_triggered) {
 
 }
 ```
@@ -133,14 +133,14 @@ public AnalysisResponse ask(@PathVariable String sessionId, @RequestBody Map<Str
   var prompt = template.create(Map.of("history", history, "context", context, "message", message));
 
   //Given tools definition here to Model along with Memory and Context
-  String response = chatClient.prompt(prompt)
+  AnalysisResponse response = chatClient.prompt(prompt)
       .tools(cicdTools)
       .advisors(advisorSpec -> advisorSpec.param("conversationId", sessionId)).call().entity(AnalysisResponse.class);
 
   // Update chat memory
   chatMemory.add(sessionId, new UserMessage(message));
   assert response != null;
-  chatMemory.add(sessionId, new AssistantMessage(response));
+  chatMemory.add(sessionId, new AssistantMessage(response.toString()));
   return response;
 }
 ```
