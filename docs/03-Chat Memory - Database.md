@@ -302,7 +302,7 @@ Add memory use and it's import:
 ```java
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ai.chat.messages.UserMessage;
-import org.springframework.ai.chat.messages.SystemMessage;
+import org.springframework.ai.chat.messages.AssistantMessage;
 ```
 
 ```java
@@ -324,7 +324,7 @@ public String ask(@PathVariable String sessionId, @RequestBody Map<String, Strin
 
   // Update chat memory
   chatMemory.add(sessionId, new UserMessage(message));
-  chatMemory.add(sessionId, new SystemMessage(response));
+  chatMemory.add(sessionId, new AssistantMessage(response));
   return response;
 }
 ```
