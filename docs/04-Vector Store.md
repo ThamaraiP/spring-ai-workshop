@@ -167,7 +167,7 @@ public String ask(@PathVariable String sessionId, @RequestBody Map<String, Strin
   PromptTemplate template = new PromptTemplate(promptTemplate);
   var prompt = template.create(Map.of("history", history, "context", context, "message", message));
 
-  //Given tools definition here to Model along with Memory and Context
+  //Giving here the Memory and Context
   String response = chatClient.prompt(prompt)
       .advisors(advisorSpec -> advisorSpec.param("conversationId", sessionId)).call().content();
 
